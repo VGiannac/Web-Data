@@ -9,11 +9,11 @@ class XmlParser:
         self.robots_url = robots_url
 
     def get_sitemap_urls(self):
-        # Fetch robots.txt content
+        # Get content from robots.txt
         response = requests.get(self.robots_url)
         robots_content = response.text
 
-        # Parse robots.txt to find sitemap URLs
+        # To locate sitemap URLs, read robots.txt.
         sitemap_urls = []
         for line in robots_content.split('\n'):
             if line.startswith('Sitemap:'):
