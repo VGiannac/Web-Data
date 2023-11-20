@@ -21,5 +21,13 @@ class XmlParser:
 
         return sitemap_urls
 
+    def get_sitemap_data(self):
+        # Get sitemap URLs
+        sitemap_urls = self.get_sitemap_urls()
+
+        # Create a DataFrame
+        sitemap_df = pd.DataFrame({'Sitemap_URLs': sitemap_urls})
+
+        return sitemap_df
 
 
