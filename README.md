@@ -55,7 +55,7 @@ print(sitemap_df)
 - [Open Trivia Database API Documentation](https://opentdb.com/api_config.php)
 - [Matplotlib Documentation](https://matplotlib.org/stable/contents.html)
 - [Seaborn Documentation](https://seaborn.pydata.org/)
-- [WordCloud Documentation](https://github.com/amueller/word_cloud)
+- [WordCloud Documentation](https://www.datacamp.com/tutorial/wordcloud-python)
 
 
 ## Additional Resources: 
