@@ -1,4 +1,16 @@
-# Web-Data
+## Web Data Extraction and Modification with Python
 
-Python code for a project centered on online data integration and analysis may be found in this repository. Modules for web scraping, XML parsing, API data collecting, and exploratory data analysis (EDA) are all included in the project.
-Every module is contained within a Python package, offering a methodical and disciplined way to work with various web data sources. The integration of these modules is seen in the accompanying Jupyter Notebook, which also features pandas-based exploratory data analysis. The project is an invaluable resource for comprehending and utilizing web data processing techniques since it places a strong emphasis on best practices in coding, documentation, and data analysis.
+### Overview:
+
+  In data science and analytics, operations like web data extraction and manipulation are crucial. This project uses Python to investigate three main areas: online scraping, API interaction, and XML parsing. Every task adds to a modular package in Python, which makes it possible to combine explanations and code in an easy-to-use manner.
+  
+### Tools and Technologies:
+- Python 3.11.6
+- Requests 2.31
+- BeautifulSoup 4.12.2
+- xml.etree.ElementTree (for XML parsing)
+- Pandas 2.1.1
+- Matplotlib 3.8.0
+- Seaborn 0.13.0
+- WordCloud 1.9.2
+
