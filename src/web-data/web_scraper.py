@@ -21,11 +21,9 @@ class WebScraper:
 
         # Extract data from the website using BeautifulSoup
         # Modify the following code based on the structure of the website
-        # and the specific data you want to scrape
         data = {
             'Field1': [item.text for item in soup.select('css_selector_for_field1')],
             'Field2': [item.text for item in soup.select('css_selector_for_field2')],
-            # Add more fields as needed
         }
 
         # Create a DataFrame from the scraped data
