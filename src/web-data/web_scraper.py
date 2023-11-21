@@ -1,46 +1,33 @@
+# web_scraper.py
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
 class WebScraper:
-    def __init__(self):
-        self.base_url = "https://www.imdb.com/chart/top"
+    def __init__(self, base_url):
+        self.base_url = base_url
 
-    def get_top_movies(self, num_movies=10):
-        # Send a GET request to the IMDb top movies page
+    def scrape_data(self):
+        # Send a GET request to the website
         response = requests.get(self.base_url)
+
+        # Check if the request was successful
+        if response.status_code != 200:
+            print(f"Failed to fetch data. Status code: {response.status_code}")
+            return pd.DataFrame()
+
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        # Extract information about the top-rated movies
-        movie_elements = soup.select('td.titleColumn')
-        movies = []
+        # Extract data from the website using BeautifulSoup
+        # Modify the following code based on the structure of the website
+        data = {
+            'Field1': [item.text for item in soup.select('css_selector_for_field1')],
+            'Field2': [item.text for item in soup.select('css_selector_for_field2')]
+        }
 
-        for i, movie_elem in enumerate(movie_elements[:num_movies]):
-            title = movie_elem.find('a').get_text(strip=True)
-            year = movie_elem.find('span', class_='secondaryInfo').get_text(strip=True)
-            rating = movie_elem.find_next('td').find('strong').get_text(strip=True)
-            cast = self.get_cast_details(movie_elem.find('a')['href'])
-            
-            movies.append({
-                'Rank': i + 1,
-                'Title': title,
-                'Year': year,
-                'Rating': rating,
-                'Cast': cast
-            })
+        # Create a DataFrame from the scraped data
+        df = pd.DataFrame(data)
 
-        return pd.DataFrame(movies)
+        return df
 
-    def get_cast_details(self, movie_url):
-        # Get the cast details for a specific movie
-        movie_url = f"https://www.imdb.com{movie_url}"
-        response = requests.get(movie_url)
-        soup = BeautifulSoup(response.text, 'html.parser')
-
-        cast_list = []
-        cast_elements = soup.select('td.primary_photo + td a[href^="/name/"]')
-        
-        for cast_elem in cast_elements:
-            cast_list.append(cast_elem.get_text(strip=True))
-
-        return ', '.join(cast_list)
